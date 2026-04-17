@@ -10,6 +10,7 @@ A professional sandbox repository dedicated to testing and demonstrating GitHub 
 ## 🚀 Overview
 
 This repository serves as a testing ground for:
+- **[Visual Test Lab](test.html)**: A premium interface for verifying badge aesthetics.
 - **GitHub Status Badges**: Implementing and verifying shields.io integrations.
 - **Co-Author Commits**: Validating multi-author attribution in commit history.
 - **Workflow Automation**: Testing GitHub Actions triggers and status reporting.

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Badge | Visual Verification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.5);
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #818cf8, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            font-weight: 300;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(to right, var(--primary), transparent);
+        }
+
+        .badge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .badge-item {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .badge-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-dim);
+        }
+
+        .test-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-dim);
+        }
+
+        input {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            color: var(--text);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-glow);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            filter: brightness(1.1);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            animation: fadeIn 1s ease-out 1s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Decorative blobs */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--primary);
+            filter: blur(120px);
+            opacity: 0.1;
+            z-index: 0;
+            border-radius: 50%;
+        }
+
+        .blob-1 { top: -100px; left: -100px; }
+        .blob-2 { bottom: -100px; right: -100px; background: #ec4899; }
+    </style>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <header>
+            <h1>Visual Test Lab</h1>
+            <p class="subtitle">Verifying repository metrics and badge aesthetics</p>
+        </header>
+
+        <main class="card">
+            <div class="section-title">Active Badges</div>
+            <div class="badge-grid">
+                <div class="badge-item">
+                    <span class="badge-label">Build Status</span>
+                    <img src="https://img.shields.io/badge/build-passing-brightgreen" alt="Build">
+                </div>
+                <div class="badge-item">
+                    <span class="badge-label">Version</span>
+                    <img src="https://img.shields.io/badge/version-1.0.0-blue" alt="Version">
+                </div>
+                <div class="badge-item">
+                    <span class="badge-label">License</span>
+                    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+                </div>
+                <div class="badge-item">
+                    <span class="badge-label">Tests</span>
+                    <img src="https://img.shields.io/badge/tests-passed-success" alt="Tests">
+                </div>
+            </div>
+
+            <div class="section-title">Interactive Sandbox</div>
+            <div class="test-controls">
+                <div class="input-group">
+                    <label for="coauthor">Test Co-Author Attribution</label>
+                    <input type="text" id="coauthor" placeholder="Enter name or email..." value="htwocloud <htwo.cloud.service@gmail.com>">
+                </div>
+                <button class="btn" onclick="alert('Co-author test triggered for: ' + document.getElementById('coauthor').value)">Run Signature Validation</button>
+            </div>
+        </main>
+
+        <footer>
+            &copy; 2026 SSRNServices | Part of the Test Badge Ecosystem
+        </footer>
+    </div>
+</body>
+</html>
